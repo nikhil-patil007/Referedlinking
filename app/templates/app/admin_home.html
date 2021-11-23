@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>
+        Admin Home
+    </title>
+    <a style='margin-left : 95%' href="{% url 'ALogout' %}">Logout</a>
+    <h2><p style="font-family: cursive; color: red ">Hello Admin,</p></h2>
+    <h4><p style="text-align:center; font-family: cursive; "> There are {{pd}} People Refered.. </p></h4>
+</head>
+<body style="background-color:lightgray;">
+<table border=1 align='center' style ='width: 100%;'>
+    <tr style='background:lightgreen'>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Recommended By</th>
+        <th>Email</th>
+        <th>Contact No</th>
+        <th>Gender</th>
+        <th>Reference Code</th>
+        <th>Action</th>
+    </tr>
+    <hr>
+    {% for i in grtt %}
+    <tr style='background:lightgray'>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.recommended}}
+        </td>
+        <td>{{i.email}}</td>
+        <td>{{i.mobile}}</td>
+        <td>
+            {% if i.gender == 'm' %}
+            Male
+            {% elif i.gender == 'f' %}
+            Female
+            {% elif i.gender == 'o' %}
+            Other
+            {% endif %}
+        </td>
+        <td>{{i.referer_code}}</td>
+        <td>
+        <a href='{% url 'deleteuser' pk=i.id %}'>Delete
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

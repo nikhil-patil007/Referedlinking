@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>
+        Reference Home
+    </title>
+    <a style='margin-left : 95%' href="{% url 'Logout' %}">Logout</a>
+    <h4><p style="font-family: cursive; color:brown">Hello {{request.session.uname}},</p></h4>
+</head>
+<body style="background-color:lightgray;">
+   <h4><p style="font-family: cursive; ">Your Refered Code :- <a href='{% url 'registerref' code=getusr.referer_code %}'> {{getusr.referer_code}} </a> </p></h4>
+    <h4><p style="text-align:center; font-family: cursive; ">Your Refered People </p></h4>
+<table border=1 align='center' style ='width: 100%;'>
+    <tr style='background:lightblue'>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact No</th>
+        <th>Gender</th>
+        <th>Reference Code</th>
+    </tr>
+    <hr>
+    {% for i in usr %}
+    <tr style='background:lightgray'>
+        <td>{{i.id}}</td>
+        <td>{{i.name}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.mobile}}</td>
+        <td>
+            {% if i.gender == 'm' %}
+            Male
+            {% elif i.gender == 'f' %}
+            Female
+            {% elif i.gender == 'o' %}
+            Other
+            {% endif %}
+        </td>
+        <td>{{i.referer_code}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

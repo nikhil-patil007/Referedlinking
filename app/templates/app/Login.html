@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>
+        Reference Login
+    </title>
+</head>
+<body style="background-color:powderblue;">
+    <h1 align=center style="font-family: cursive;"> Login From </h1><hr/><br>
+    <form align=center action={% url 'loginuser' %} method="POST">{% csrf_token %}
+        {% if err %}
+       <h4><p style=" color: rgba(255, 60, 0, 0.973); font-family: cursive; ">{{err}}</p></h4>
+        {% endif %}
+        <br>
+        <lable> Email : </lable>
+        <input type='email' name='email' placeholder='Enter Email' required>
+        <br>
+        <br>
+        <lable> Password : </lable>
+        <input type='password' name='password' placeholder='Enter Password' required>
+        <br>
+        <br>
+        <input type='submit' value='Login'>
+        <br>
+        <br>
+    <a href='{% url 'register' %}'>Create A New Account</a>
+    </form>
+</body>
+</html>

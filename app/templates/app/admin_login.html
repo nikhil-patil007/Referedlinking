@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>
+        Admin Login
+    </title>
+</head>
+<body style="background-color:lightgray;">
+    <h1 align=center style="font-family: cursive;">Admin Login From </h1><hr/><br>
+    <form align=center action={% url 'loginadmin' %} method="POST">{% csrf_token %}
+        {% if err %}
+       <h4><p style=" color: rgba(255, 60, 0, 0.973); font-family: cursive; ">{{err}}</p></h4>
+        {% endif %}
+        <br>
+        <lable> Username : </lable>
+        <input type='text' name='email' placeholder='Enter Username' required>
+        <br>
+        <br>
+        <lable> Password : </lable>
+        <input type='password' name='password' placeholder='Enter Password' required>
+        <br>
+        <br>
+        <input type='submit' value='Login'>
+    </form>
+</body>
+</html>
