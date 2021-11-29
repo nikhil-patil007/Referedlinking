@@ -1,6 +1,6 @@
 from django.db import models
 from django.db.models import fields
-from Crypto.Cipher import AES
+
 
 # Create your models here.
 # Gender Choice Field

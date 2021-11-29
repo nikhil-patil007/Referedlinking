@@ -2,8 +2,9 @@ from django.http import request,Http404
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import *
 from django.contrib.auth.hashers import make_password,check_password
+from django.contrib import messages
 
-print('-------------------------------------------------------------------------Refferal Link Project-------------------------------------------------------------------------\n')
+print('----------------------------------------------Refferal Link Project---------------------------------------------\n')
 
 # Create your views here.
 
@@ -33,9 +34,12 @@ def loginuser(request):
             request.session['uname']=usr[0].name
             return redirect('home')
         else:
-            msg = 'Password Is Wrong'
-            print(f'------------------------------------------------------------->1. Both Condition Check For Login')
-            return render(request,'app/Login.html',{'err':msg})
+            # msg = 'Password Is Wrong'
+            # print(f'------------------------------------------------------------->1. Both Condition Check For Login')
+            # return render(request,'app/Login.html',{'err':msg})
+            messages.warning(request, 'Password Is Wrong')
+            return redirect('Login')
+            
     else:
         print(f'------------------------------------------------------------->2. Both Condition Check For Login Unknown User')
         msg = 'Unknow User Register Here'
